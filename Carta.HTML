@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Para mi noviecita 💖</title>
+  <meta name="theme-color" content="#ff83ac">
+  <style>
+    :root{
+      --bg1:#fff0f5; 
+      --bg2:#ffe6f0; 
+      --fg:#2a2a2a;
+      --accent:#ff5fa2;
+      --accent-2:#ffa6c9;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --ring: 0 10px 25px rgba(255,95,162,.25);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--fg);
+      background: radial-gradient(1200px 600px at 10% 10%, var(--bg2), transparent),
+                  radial-gradient(1200px 600px at 90% 10%, #ffe7f7, transparent),
+                  linear-gradient(180deg, var(--bg1), #fff);
+      overflow-x:hidden;
+    }
+    .container{
+      max-width: 900px; margin: 40px auto; padding: 24px; 
+    }
+    .card{
+      background: var(--card); border-radius: 24px; padding: 28px; box-shadow: var(--ring);
+    }
+    h1{font-size: clamp(28px, 5vw, 46px); margin: 0 0 6px}
+    .subtitle{color:var(--muted); margin:0 0 18px; font-size:clamp(14px,2.5vw,16px)}
+    .badges{display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 0}
+    .badge{background:linear-gradient(135deg, var(--accent), var(--accent-2)); color:#fff; padding:8px 12px; border-radius:999px; font-weight:600; font-size:14px; box-shadow: var(--ring)}
+
+    .message{font-size: clamp(16px, 2.8vw, 18px); line-height:1.7; margin-top:16px; min-height: 90px}
+    .cursor{display:inline-block; width:10px; background:#0000; border-right:2px solid var(--accent); animation: blink 1s steps(1) infinite}
+    @keyframes blink{50%{border-color:transparent}}
+
+    .actions{display:flex; flex-wrap:wrap; gap:12px; margin:18px 0 6px}
+    button{border:0; border-radius:14px; padding:12px 16px; font-weight:700; cursor:pointer; transition:.2s transform ease, .2s box-shadow ease}
+    .btn-primary{background:linear-gradient(135deg, var(--accent), var(--accent-2)); color:#fff; box-shadow: var(--ring)}
+    .btn-secondary{background:#fff; color:var(--accent); border:2px solid var(--accent);}
+    button:hover{transform: translateY(-1px)}
+
+    .grid{display:grid; gap:14px; margin-top:18px}
+    .grid.gallery{grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));}
+    .grid.timeline{grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));}
+
+    .imgcard{position:relative; overflow:hidden; border-radius:18px; box-shadow: var(--ring); background:#fff}
+    .imgcard img{width:100%; height:220px; object-fit:cover; display:block; transition: .3s transform}
+    .imgcard:hover img{transform: scale(1.05)}
+    .imgcap{position:absolute; inset:auto 0 0 0; background: linear-gradient(to top, rgba(0,0,0,.55), transparent); color:#fff; padding:10px 12px; font-size:14px}
+
+    .item{background:#fff; border-radius:18px; padding:16px; box-shadow: var(--ring)}
+    .item h3{margin:0 0 6px; font-size:18px}
+    .item p{margin:0; color:var(--muted)}
+
+    .audio-wrap{margin-top:18px; background:#fff; padding:14px; border-radius:18px; box-shadow: var(--ring)}
+    audio{width:100%}
+
+    footer{margin:30px 0 10px; text-align:center; color:var(--muted); font-size:14px}
+
+
+    .heart{position:fixed; left:var(--x); top:var(--y); transform:translate(-50%, -50%); pointer-events:none; font-size:var(--size,24px); filter: drop-shadow(0 2px 8px rgba(255,0,90,.25)); animation:floatUp 1.8s ease-out forwards}
+    @keyframes floatUp{0%{opacity:1; transform:translate(-50%, -50%) scale(.9)} 100%{opacity:0; transform:translate(-50%, -320px) scale(1.6)}}
+
+    .hidden{display:none}
+    .center{display:flex; align-items:center; justify-content:center}
+  </style>
+</head>
+<body>
+  <script>
+
+    const CONFIG = {
+      yourName: "Wili",
+      partnerName: "Katy",
+
+      anniversary: "2025-05-08",
+
+      mainMessage: 
+        "Desde el momento en que llegaste a mi vida, todo cambió para bien.\n" +
+        "Tú eres la razón por la que mis días tienen más color y mi corazón más calma.\n\n" +
+        "Quiero agradecerte por cada sonrisa, por cada abrazo y por cada palabra de apoyo.\n" +
+        "No importa si el día es bueno o difícil, siempre logras que todo valga la pena.\n\n" +
+        "Prometo acompañarte en tus sueños, cuidarte en cada paso y nunca soltar tu mano.\n" +
+        "Eres mi presente más bonito y mi futuro más soñado.\n\n" +
+        "Te amo con todo lo que soy, hoy y siempre 💖.",
+
+
+      songUrl: "",
+
+      reasons: [
+        "Eres la primera persona en la que pienso al despertar.",
+        "Tu sonrisa ilumina hasta mis días más grises.",
+        "Me haces sentir amado tal como soy.",
+        "Eres mi paz en medio del caos.",
+        "Siempre logras sacarme una sonrisa sin intentarlo.",
+        "Cada momento contigo se vuelve especial.",
+        "Me inspiras a ser una mejor persona.",
+        "Tus abrazos son mi lugar favorito en el mundo.",
+        "Me entiendes incluso cuando no digo nada.",
+        "Me haces sentir que todo es posible si estás a mi lado.",
+        "No necesito nada más cuando estoy contigo.",
+        "Eres mi mejor amiga y mi amor al mismo tiempo.",
+        "Tus pequeños detalles me demuestran cuánto me amas.",
+        "A tu lado, los problemas parecen más pequeños.",
+        "Contigo descubrí lo que significa el verdadero amor."
+        ],
+
+
+      gallery: [
+        "https://dl.dropboxusercontent.com/scl/fi/5iu0rbc20gxwj9q6mztah/WhatsApp-Image-2025-09-05-at-3.14.14-PM.jpeg?rlkey=p8u0mj0m566jchfpui1ye481t&st=sujkf3k6",
+        "https://dl.dropboxusercontent.com/scl/fi/7f18tg60xz4tmgi6upor9/WhatsApp-Image-2025-09-05-at-3.14.15-PM-1.jpeg?rlkey=5it9r52s69ntl5126lsdks3yk&st=b3tv1nrs",
+        "https://dl.dropboxusercontent.com/scl/fi/lu9q5e1zvf8by3urd8ret/WhatsApp-Image-2025-09-05-at-3.14.15-PM-2.jpeg?rlkey=rmtv7fix8pk24hzfd0x9yqq1q&st=anefj7m6",
+        "https://dl.dropboxusercontent.com/scl/fi/3unedq5oejsfs4jkkgxzm/WhatsApp-Image-2025-09-05-at-3.14.15-PM.jpeg?rlkey=9fe500sr69qg9tflm8megc82u&st=n8y9w825"
+      ]
+    };
+
+
+
+    const $ = (sel, ctx=document) => ctx.querySelector(sel);
+    const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
+
+
+    function daysFrom(dateStr){
+      if(!dateStr) return "";
+      const start = new Date(dateStr+"T00:00:00");
+      const now = new Date();
+      const diff = Math.floor((now - start)/(1000*60*60*24));
+      return isFinite(diff) && diff>=0 ? `${diff} días juntos` : "";
+    }
+
+
+    async function typeText(el, text, speed=28){
+      el.textContent = "";
+      const cursor = document.createElement('span');
+      cursor.className = 'cursor';
+      el.append(cursor);
+      for(const ch of text){
+        await new Promise(r=>setTimeout(r, ch==='\n'? 180 : speed));
+        cursor.before(ch);
+      }
+      cursor.remove();
+    }
+
+
+    function spawnHeart(x,y){
+      const h = document.createElement('div');
+      h.className = 'heart';
+      h.textContent = Math.random() < .5 ? '💖' : '💗';
+      h.style.setProperty('--x', x+'px');
+      h.style.setProperty('--y', y+'px');
+      h.style.setProperty('--size', (16 + Math.random()*24)+'px');
+      document.body.appendChild(h);
+      setTimeout(()=>h.remove(), 1900);
+    }
+    addEventListener('click', e=> spawnHeart(e.clientX, e.clientY));
+
+
+    document.addEventListener('DOMContentLoaded', async () => {
+
+      $('#titleName').textContent = CONFIG.partnerName || 'mi princesa';
+      $('#fromName').textContent = CONFIG.yourName || 'yo';
+      const days = daysFrom(CONFIG.anniversary);
+      $('#daysTogether').textContent = days;
+      if(!days) $('#daysBadge').classList.add('hidden');
+
+
+      await typeText($('#message'), CONFIG.mainMessage);
+
+
+      if(CONFIG.reasons && CONFIG.reasons.length){
+        const box = $('#reasons');
+        CONFIG.reasons.forEach((t,i)=>{
+          const it = document.createElement('div');
+          it.className = 'item';
+          it.innerHTML = `<h3>#${i+1}</h3><p>${t}</p>`;
+          box.appendChild(it);
+        });
+      } else {
+        $('#surprise').classList.add('hidden');
+      }
+
+
+      if(CONFIG.gallery && CONFIG.gallery.length){
+        const grid = $('#gallery');
+        CONFIG.gallery.forEach((src,i)=>{
+          const card = document.createElement('figure');
+          card.className = 'imgcard';
+          card.innerHTML = `<img src="${src}" alt="Foto ${i+1}"><figcaption class="imgcap">Foto ${i+1}</figcaption>`;
+          grid.appendChild(card);
+        });
+      } else {
+        $('#photos').classList.add('hidden');
+      }
+
+
+      if(CONFIG.songUrl){
+        const audio = document.createElement('audio');
+        audio.controls = true;
+        audio.src = CONFIG.songUrl;
+        $('#player').appendChild(audio);
+      } else {
+        $('#player').classList.add('hidden');
+      }
+    });
+
+
+    function toggleSurprise(){
+      $('#surprise').classList.toggle('hidden');
+    }
+    function printPage(){
+      window.print();
+    }
+  </script>
+
+  <div class="container">
+    <div class="card">
+      <h1>Para <span id="titleName">mi princesa</span> 💖</h1>
+      <p class="subtitle">De <strong id="fromName">yo</strong>
+        <span class="badges">
+          <span class="badge" id="daysBadge"><span id="daysTogether"></span></span>
+        </span>
+      </p>
+
+      <div class="message" id="message"></div>
+
+      <div class="actions">
+        <button class="btn-primary" onclick="toggleSurprise()">PRESIONAME PARA UNA SORPRESAAA</button>
+        <button class="btn-secondary" onclick="printPage()">Guardame como PDF</button>
+      </div>
+    </div>
+
+    <section id="surprise" class="hidden" style="margin-top:18px">
+      <div class="card">
+        <h2 style="margin:0 0 8px">Pequeñas razones por las que te amo</h2>
+        <div id="reasons" class="grid timeline"></div>
+      </div>
+    </section>
+
+    <section id="photos" style="margin-top:18px">
+      <div class="card">
+        <h2 style="margin:0 0 8px">Nuestras fotitas favoritas ❤️❤️❤️❤️</h2>
+        <div id="gallery" class="grid gallery"></div>
+        <p class="subtitle" style="margin-top:10px">Cada foto contigo es un recuerdo inolvidable</p>
+      </div>
+    </section>
+
+    <section id="player" class="audio-wrap"></section>
+
+    <footer>
+      Hecho con mi corazon y MUCHOOOOO AMOOOOOR (y mucho codigo JAJASJJAS)
+    </footer>
+  </div>
+</body>
+</html>
